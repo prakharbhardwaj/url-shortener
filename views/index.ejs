@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener by Prakhar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to URL Shortener</h1>
+        <form action="/short" method="POST" class="my-4 form-inline">
+            <label for="fullUrl" class="sr-only">Enter Your URL (e.g. https://github.com/prakharbhardwaj)</label>
+            <input required placeholder="Enter Your URL (e.g. https://github.com/prakharbhardwaj)" type="url"
+                name="fullUrl" id="fullUrl" class="form-control col mr-2">
+            <button class="btn btn-success" type="submit">Shrink It!</button>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shorteners.forEach(shortUrl => { %>
+                <tr>
+                    <td><a href="<%= shortUrl.full %>"><%= shortUrl.full %></a></td>
+                    <td><a href="<%= shortUrl.short %>"><%= shortUrl.short %></a></td>
+                    <td><%= shortUrl.clicks %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!--footer-area start-->
+    <footer>
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>Developed by <a href="https://prakharbhardwaj.github.io/">Prakhar Bhardwaj👨🏻‍💻</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
